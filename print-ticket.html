@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Blank HTML5</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .print {
+            page-break-after: always;
+        }
+    </style>
+</head>
+
+<body >
+    <div class="m-10 button-wrapper">
+        <div class="flex flex-row">
+            <div class="w-3/4">
+                <a href="index.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-full">Back to Home</a>
+                <a href="sports.html" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-4 px-6 rounded-full">Book More</a>
+            </div>
+            <div class="w-1/4 text-right">
+                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-full print-tickets w-1/4">Print</button>
+            </div>
+        </div>
+
+        <div >
+
+        </div>
+        
+    </div>
+    
+    <div class="ticket-list">
+        
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            let ticketSummary = JSON.parse(localStorage.getItem('TS'));
+            var ticketList = $('.ticket-list');
+            var user = ticketSummary.user_tickets.user;
+            for(const ticket of ticketSummary.user_tickets.tickets){
+                console.log(ticket);
+                ticketList.append(
+                `
+                <div class="ticket-main text-center print" style="width: 400px;margin: auto;">
+                <br>
+                <img style="width: 200px;margin: auto;"
+                    src="http://divgen.net/ticketing/assets/images/logo/SS-LOGO-DESIGN-2.png" alt="">
+                <h1>----------------------------------------------------</h1>
+                <h2 class="text-amber-600 text-xl">${ticketSummary.sport_title}</h2>
+                <h1>----------------------------------------------------</h1>
+                <h1 class="font-bold">${ticket.section_name}</h1>
+                <p class="font-bold text-xl">LKR ${ticket.price}</p>
+                <br>
+                <p>Issued to : ${user.user_name}</p>
+                <p>Email : ${user.email}</p>
+                <p>Phone number : ${user.contact_no}</p>
+                <br>
+        
+                <img id="qr" src="https://api.qrserver.com/v1/create-qr-code/?data=${ticket.ticket_id}&amp;size=100x100" style="width:200px;margin: auto;" alt="">
+                <br>
+                <p>${ticket.ticket_id}</p>
+                <br>    
+            </div>
+                `
+                );
+            }
+
+            $('.print-tickets').click(function(){
+                $('.button-wrapper').attr('hidden', true);
+                print();
+                $('.button-wrapper').attr('hidden', false);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -55,12 +55,12 @@
                     <li>
                         <a href="index.html">Home</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="movie-grid.html">movies</a>
                     </li>
                     <li>
                         <a href="events.html">events</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="sports.html" class="active">sports</a>
                     </li>
@@ -89,10 +89,11 @@
         <div class="container">
             <div class="details-banner-wrapper">
                 <div class="details-banner-content style-two">
-                    <h3 class="title"><span class="d-block">football league</span> 
-                        <span class="d-block">tournament</span></h3>
+                    <h3 class="title">
+                        <span class="d-block sport-title">football league</span> 
+                        <!-- <span class="d-block">tournament</span></h3> -->
                     <div class="tags">
-                        <span>17 South Sherman Street Astoria, NY 11106</span>
+                        <span class="sport-venue">17 South Sherman Street Astoria, NY 11106</span>
                     </div>
                 </div>
             </div>
@@ -110,10 +111,10 @@
                     </a>
                 </div>
                 <div class="item date-item">
-                    <span class="date">MON, SEP 09 2020</span>
+                    <span class="date sport-event-date">MON, SEP 09 2020</span>
                 </div>
                 <div class="item">
-                    <h5 class="title">05:00</h5>
+                    <h5 class="title countdown-timer">05:00</h5>
                     <p>Mins Left</p>
                 </div>
             </div>
@@ -135,50 +136,35 @@
                             <i class="fas fa-user"></i><span>Sign in</span>
                         </a>
                     </div>
-                    <div class="checkout-widget checkout-contact">
+                    <div class="checkout-widget checkout-contact user-deails">
                         <h5 class="title">Share your Contact  Details </h5>
-                        <form class="checkout-contact-form">
+                        <form class="checkout-contact-form checkout-user-data-form">
                             <div class="form-group">
-                                <input type="text" placeholder="Full Name">
+                                <input type="text" id="userName" name="userName" placeholder="Full Name" value="Gayan">
                             </div>
                             <div class="form-group">
-                                <input type="text" placeholder="Enter your Mail">
+                                <input type="email" id="emailAddress" name="emailAddress" placeholder="Enter your Mail" value="test@test.com">
                             </div>
                             <div class="form-group">
-                                <input type="text" placeholder="Enter your Phone Number ">
+                                <input type="tel" id="contactNumber" name="contactNumber" placeholder="Enter your Phone Number" value="0112345678">
+                                <!-- <span style="color: red;">Incorrect format</span> -->
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Continue" class="custom-button">
                             </div>
                         </form>
                     </div>
-                    <div class="checkout-widget checkout-contact">
+                    <div class="checkout-widget checkout-contact ticket-reservation" hidden>
                         <h5 class="title">Get Your Tickets</h5>
                         <div class="ticket--area row justify-content-center">
                             <div class="col-sm-6 col-md-4">
                                 <div class="sports-ticket style-two">
-                                    <span class="cate">VIP</span>
+                                    <span class="cate ticket-section">VIP</span>
                                     <h2 class="ticket-title"><sup>LKR</sup>5000</h2>
-                                    <a href="#0" class="t-button">
+                                    <p><span style="color: #0a1e5e;">Available Tickets : </span><span class="availableTicketCount" style="color: #0a1e5e;"> 0</span></p>
+                                    <!-- <a href="#0" class="t-button">
                                         <i class="fas fa-plus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                <div class="sports-ticket style-two">
-                                    <span class="cate">Pavilion</span>
-                                    <h2 class="ticket-title"><sup>LKR</sup>1000</h2>
-                                    <a href="#0" class="t-button">
-                                        <i class="fas fa-check"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                <div class="sports-ticket style-two">
-                                    <span class="cate">Normal</span>
-                                    <h2 class="ticket-title"><sup>LKR</sup>550</h2><a href="#0" class="t-button">
-                                        <i class="fas fa-plus"></i>
-                                    </a>
+                                    </a> -->
                                 </div>
                             </div>
                         </div>
@@ -187,7 +173,7 @@
                                 <form class="cart-button event-cart">
                                     <span class="d-inline-block">Number of Seats : </span>
                                     <div class="cart-plus-minus"><div class="dec qtybutton">-</div>
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
+                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="0">
                                     <div class="inc qtybutton">+</div></div>
                                 </form>
                             </div>
@@ -203,7 +189,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="checkout-widget checkout-card mb-0">
+                    <div class="checkout-widget checkout-card mb-0" hidden>
                         <h5 class="title">Payment Option </h5>
                         <ul class="payment-option">
                             <li class="active">
@@ -267,18 +253,18 @@
                         <h4 class="title">booking summery</h4>
                         <ul>
                             <li>
-                                <h6 class="subtitle">Venus</h6>
-                                <span class="info">English-2d</span>
+                                <h6 class="subtitle sport-title">Venus</h6>
+                                <span class="info sport-subtitle">English-2d</span>
                             </li>
                             <li>
-                                <h6 class="subtitle"><span>City Walk</span><span>02</span></h6>
-                                <div class="info"><span>10 SEP TUE, 11:00 PM</span> <span>Tickets</span></div>
+                                <h6 class="subtitle ticket-section-summary"><span>City Walk</span><span>02</span></h6>
+                                <div class="info"><span class="sport-venue-summary">10 SEP TUE, 11:00 PM</span> <span>Tickets</span></div>
                             </li>
                             <li>
-                                <h6 class="subtitle mb-0"><span>Tickets  Price</span><span>LKR1000</span></h6>
+                                <h6 class="subtitle mb-0"><span>Tickets  Price</span><span class="tickets-price">LKR 0</span></h6>
                             </li>
                         </ul>
-                        <ul class="side-shape">
+                        <!-- <ul class="side-shape">
                             <li>
                                 <h6 class="subtitle"><span>combos</span><span>LKR1000</span></h6>
                                 <span class="info"><span>2 Nachos Combo</span></span>
@@ -286,17 +272,17 @@
                             <li>
                                 <h6 class="subtitle"><span>food & bevarage</span></h6>
                             </li>
-                        </ul>
+                        </ul> -->
                         <ul>
                             <li>
-                                <span class="info"><span>price</span><span>LKR10000</span></span>
-                                <span class="info"><span>vat</span><span>LKR150</span></span>
+                                <span class="info"><span>price</span><span class="tickets-price">LKR 0</span></span>
+                                <span class="info"><span>vat</span><span>LKR 0</span></span>
                             </li>
                         </ul>
                     </div>
                     <div class="proceed-area  text-center">
-                        <h6 class="subtitle"><span>Amount Payable</span><span>LKR20000</span></h6>
-                        <a href="#0" class="custom-button back-button">proceed</a>
+                        <h6 class="subtitle"><span>Amount Payable</span><span class="tickets-price">LKR 0</span></h6>
+                        <a href="print-ticket.html" class="custom-button back-button book-tickets">proceed</a>
                     </div>
                 </div>
             </div>
@@ -324,11 +310,8 @@
         <div class="container">
             <div class="footer-top">
                 <div class="logo">
-<a href="index.html">
-                        <img style="
-                        width: 135px;
-                    " src="./assets/images/footer/SS-LOGO-DESIGN-2.png" alt="footer">
-
+                    <a href="index.html">
+                        <img style="width: 135px;" src="./assets/images/footer/SS-LOGO-DESIGN-2.png" alt="footer">
                     </a>
                 </div>
                 <ul class="social-icons">
@@ -400,6 +383,9 @@
     <script src="assets/js/odometer.min.js"></script>
     <script src="assets/js/viewport.jquery.js"></script>
     <script src="assets/js/nice-select.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/backend-services/endpoint.js"></script>
+    <script src="assets/js/backend-services/sports-checkout-service.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 

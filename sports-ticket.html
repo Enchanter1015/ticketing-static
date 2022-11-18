@@ -58,12 +58,12 @@
             <li>
               <a href="index.html">Home</a>
             </li>
-            <li>
+            <!-- <li>
               <a href="movie-grid.html">movies</a>
             </li>
             <li>
               <a href="events.html">events</a>
-            </li>
+            </li> -->
             <li>
               <a href="sports.html" class="active">sports</a>
             </li>
@@ -96,11 +96,11 @@
         <div class="details-banner-wrapper">
           <div class="details-banner-content style-two">
             <h3 class="title">
-              <span class="d-block">football league</span>
-              <span class="d-block">tournament</span>
+              <span class="d-block sport-title">football league</span>
+              <!-- <span class="d-block">tournament</span> -->
             </h3>
             <div class="tags">
-              <span>17 South Sherman Street Astoria, NY 11106</span>
+              <span class="sport-venue">17 South Sherman Street Astoria, NY 11106</span>
             </div>
           </div>
         </div>
@@ -118,11 +118,11 @@
             </a>
           </div>
           <div class="item date-item">
-            <span class="date">MON, SEP 09 2020</span>
+            <span class="date sport-event-date">MON, SEP 09 2020</span>
           </div>
           <div class="item">
-            <h5 class="title">05:00</h5>
-            <p>Mins Left</p>
+            <!-- <h5 class="title">05:00</h5> -->
+            <p>You have 5 minutes to book your tickets</p>
           </div>
         </div>
       </div>
@@ -133,7 +133,7 @@
     <div class="event-facility padding-bottom padding-top">
       <div class="container">
         <div class="section-header-3">
-          <img style="border-radius: 10px;" src="https://www.thesportsnews.in/wp-content/uploads/2019/08/Netaji-Subhash-Chandra-Bose-Indoor-Stadium-Kolkata-Bengal-Warriors-Pro-Kabaddi-Ticket-Booking.png" alt="">
+          <img class="section-main-img" style="border-radius: 10px;" src="https://www.thesportsnews.in/wp-content/uploads/2019/08/Netaji-Subhash-Chandra-Bose-Indoor-Stadium-Kolkata-Bengal-Warriors-Pro-Kabaddi-Ticket-Booking.png" alt="">
         </div>
         <div class="section-header-3">
           <!-- <span class="cate">simple pricing</span> -->
@@ -144,31 +144,8 @@
             suspendisse ultrices gravida
           </p>
         </div>
-        <div class="row justify-content-center mb-30-none">
-          <div class="col-sm-6 col-md-4">
-            <div class="sports-ticket">
-              <span class="cate">VIP A</span>
-              <h2 class="ticket-title"><sup>LKR</sup>5000</h2>
-              <p>Total Seats: <span>20</span></p>
-              <a href="sports-checkout.html" class="custom-button">proceed</a>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="sports-ticket">
-              <span class="cate">Block A</span>
-              <h2 class="ticket-title"><sup>LKR</sup>1000</h2>
-              <p>Total Seats: <span>250</span></p>
-              <a href="sports-checkout.html" class="custom-button">proceed</a>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="sports-ticket">
-              <span class="cate">Block B</span>
-              <h2 class="ticket-title"><sup>LKR</sup>550</h2>
-              <p>Total Seats: <span>750</span></p>
-              <a href="sports-checkout.html" class="custom-button">proceed</a>
-            </div>
-          </div>
+        <div class="row justify-content-center mb-30-none ticket-sections">
+
         </div>
       </div>
     </div>
@@ -276,6 +253,8 @@
     <script src="assets/js/odometer.min.js"></script>
     <script src="assets/js/viewport.jquery.js"></script>
     <script src="assets/js/nice-select.js"></script>
+    <script src="assets/js/backend-services/endpoint.js"></script>
+    <script src="assets/js/backend-services/sports-ticket-service.js"></script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>
