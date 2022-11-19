@@ -15,6 +15,10 @@ $(document).ready(function(){
 
     removeLsData();
 
+    const pad_digits = (n) =>{
+        return (n < 10 ? '0' : '') + n;
+      }
+
     const getAllSports = (searchParams) => {
         $.ajax({
             url: endpoint+"sports/getAllSports",
@@ -31,6 +35,7 @@ $(document).ready(function(){
                 sportEventTilesParent.empty();
                 for (const sportEvent of response) {
                     const eventDate = new Date(sportEvent.date_time);
+                    var time = pad_digits(eventDate.getHours())+":"+pad_digits(eventDate.getMinutes());
                     sportEventTilesParent.append(
                         `<div class="col-sm-6 col-lg-4 sport-tile" data-sport-event-id="${sportEvent.sport_id}">
                             <div class="sports-grid">
@@ -39,8 +44,8 @@ $(document).ready(function(){
                                         <img src="${sportEvent.image_url}" alt="sports">
                                     </a>
                                     <div class="event-date">
-                                        <h6 class="date-title">${eventDate.getDate()}</h6>
-                                        <span>${eventDate.toLocaleString('en-US', {month: 'short'})}</span>
+                                        <h6 class="date-title">${time}</h6>
+                                        <span>${eventDate.getDate()} ${eventDate.toLocaleString('en-US', {month: 'short'})}</span>
                                     </div>
                                 </div>
                                 <div class="movie-content bg-one">
