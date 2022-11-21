@@ -55,12 +55,15 @@ $(document).ready(function(){
                 sport_Id: sportsId
             },
             success: function(response) {
+                console.log(response);
                 const eventDate = new Date(response[0].date_time);
                 const monthShort = eventDate.toLocaleString('en-US', {month: 'short'}).toString().toUpperCase();
                 var days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
                 $('.sport-title').text(response[0].title);
                 $('.sport-venue').text(response[0].ground_name +", "+response[0].ground_location);
                 $('.sport-event-date').text(days[eventDate.getDay()]+", "+monthShort+" "+eventDate.getDate()+" "+eventDate.getFullYear());
+                $('.section-main-img').attr('src', response[0].ground_img);
+                $('.section-main-img').attr('data-default-image', response[0].ground_img);
             },
             error: function(xhr) {
               //Do Something to handle error
@@ -72,6 +75,11 @@ $(document).ready(function(){
 
     $(".ticket-sections").on("mouseover", ".ticket-section" , function() {
         $('.section-main-img').attr('src', $(this).data('image'))
+    });
+
+    $(".ticket-sections").on("mouseout", ".ticket-section" , function() {
+        var groundImage = $('.section-main-img');
+        groundImage.attr('src', groundImage.data('defaultImage'))
     });
 
     $(".ticket-sections").on("click", ".ticket-section" , function() {

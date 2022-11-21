@@ -107,9 +107,13 @@ $(document).ready(function(){
     
 
     if(sessionId){
+        console.log(userId, "dsfsdfdf");
+        if(userId == 'null'){
+            window.location.href = "sports-ticket.html";
+        }
         getSessionById();
         $('.ticket-reservation').attr("hidden",false);
-        $('.user-deails').attr("hidden",true);
+        $('.user-deails').attr("hidden",true); 
     }else{
         createNewSession();
     }
