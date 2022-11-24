@@ -90,12 +90,10 @@ $(document).ready(function(){
     });
 
     $(".check-area input:checkbox").change(function() {
-
         var val = [];
         $('.check-area input:checkbox:checked').each(function(i){
             val.push( this.id);
         });
-        console.log(val);
         // var ischecked= $(this).is(':checked');
         // console.log( this.id);
         // if(ischecked){
@@ -115,6 +113,5 @@ $(document).ready(function(){
 
     $(".sport-event-tiles").on("click", ".sport-tile" , function() {
         localStorage.setItem('sportEventId', $(this).data('sportEventId'));
-        console.log( $(this).data('sportEventId'));
     });
 });

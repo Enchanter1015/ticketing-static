@@ -55,7 +55,6 @@ $(document).ready(function(){
                 sport_Id: sportsId
             },
             success: function(response) {
-                console.log(response);
                 const eventDate = new Date(response[0].date_time);
                 const monthShort = eventDate.toLocaleString('en-US', {month: 'short'}).toString().toUpperCase();
                 var days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];

@@ -19,6 +19,13 @@ $(document).ready(function(){
         localStorage.removeItem('sportEventId');
     }
 
+    const clearMainVariables = () => {
+        sessionId = '';
+        userId = '';
+        sectionId = '';
+        sportEventId ='';
+    }
+
     removeLsData();
     
     var ticketPrice = 0;
@@ -42,7 +49,7 @@ $(document).ready(function(){
           minute = second * 60,
           hour = minute * 60,
           day = hour * 24;
-        //   +(59*3600*1000)
+          
         const countDown = new Date(expiresDate).getTime(),
         x = setInterval(function() {
             const now = new Date().getTime(),
@@ -56,7 +63,7 @@ $(document).ready(function(){
                 $(".countdown-timer").text("00:00");
                 deleteSession();
                 removeLsData();
-                window.location.href = "sports.html";
+                redirectToSportsPage();
             }
         }, 1000);
     }
@@ -66,14 +73,12 @@ $(document).ready(function(){
             url: endpoint+"session/createSession",
             type: "post",
             success: function(response) {
-                console.log(response);
                 sessionId = response[0].session_id;
                 ticketBookingCountDown(response[0].expires_on);
-                console.log("New Session");
-                console.log("sessionId => "+sessionId+"\nuserId=> "+userId+"\nsectionId => "+sectionId+"\nsportEventId => "+sportEventId);
             },
             error: function(xhr) {
-              //Do Something to handle error
+                removeLsData();
+                redirectToSportsPage();
             }
         });
         
@@ -88,26 +93,23 @@ $(document).ready(function(){
             },
             success: function(response) {
                 if(response.length>0){
-                    console.log(response[0])
                     sessionId = response[0].session_id;
                     ticketBookingCountDown(response[0].expires_on);
-                    console.log("Old Session");
-                    console.log("sessionId => "+sessionId+"\nuserId=> "+userId+"\nsectionId => "+sectionId+"\nsportEventId => "+sportEventId);
+                    // console.log("sessionId => "+sessionId+"\nuserId=> "+userId+"\nsectionId => "+sectionId+"\nsportEventId => "+sportEventId);
                 }else{
                     removeLsData();
-                    window.location.href = "sports.html";
+                    redirectToSportsPage();
                 }
             },
             error: function(xhr) {
                 removeLsData();
-                window.location.href = "sports.html";
+                redirectToSportsPage();
             }
         });
     };
     
 
     if(sessionId){
-        console.log(userId, "dsfsdfdf");
         if(userId == 'null'){
             window.location.href = "sports-ticket.html";
         }
@@ -118,17 +120,19 @@ $(document).ready(function(){
         createNewSession();
     }
     
+    const redirectToSportsPage = () => {
+        window.location.href = "sports.html";
+    }
+
     const deleteSession = () => {
         $.ajax({
             url: endpoint+"session/CleanSession?session_id="+sessionId,
             type: "DELETE",
             success: function(response) {
                 removeLsData();
-                window.location.href = "sports.html";
             },
             error: function(xhr) {
-                removeLsData();
-                window.location.href = "sports.html";
+                removeLsData();  
             }
         });
     };
@@ -141,7 +145,6 @@ $(document).ready(function(){
                 ticket_section_id: sectionId
             },
             success: function(response) {
-                
                 $('.ticket-section').text(response[0].title);
                 sectionName = response[0].title;
                 $('.availableTicketCount').text(response[0].available_seat_count);
@@ -150,7 +153,8 @@ $(document).ready(function(){
                 ticketPrice = response[0].price;
             },
             error: function(xhr) {
-              //Do Something to handle error
+                removeLsData();
+                redirectToSportsPage();
             }
         });
     };
@@ -184,7 +188,7 @@ $(document).ready(function(){
                     $('.user-deails').attr("hidden",true);
                 },
                 error: function(xhr) {
-                  //Do Something to handle error
+                  alert("An error occured while submitting your data");
                 }
             });
         }
@@ -208,7 +212,7 @@ $(document).ready(function(){
                 $('.sport-venue-summary').text(monthShort+" "+eventDate.getDate()+" "+eventDate.getFullYear());
             },
             error: function(xhr) {
-              //Do Something to handle error
+                alert("An error occured while reserving your ticket");
             }
         });
     };
@@ -229,7 +233,6 @@ $(document).ready(function(){
                     "command": "${command}"
                 }`,
             success: function(response) {
-                console.log(response[0]);
                 ticketsCount = response[0].reserved_seat_count;
                 $('.cart-plus-minus-box').val(response[0].reserved_seat_count);
                 $('.availableTicketCount').text(response[0].available_seat_count);
@@ -240,6 +243,7 @@ $(document).ready(function(){
                 }
             },
             error: function(xhr) {
+                alert("An error occured when reserving your ticket");
             }
         });
     };
@@ -262,17 +266,15 @@ $(document).ready(function(){
                 session_id: sessionId
             },
             success: function(response) {
-                console.log(JSON.stringify(response[0]));
-                localStorage.setItem('TS', JSON.stringify(response[0]))
+                localStorage.setItem('TS', JSON.stringify(response[0]));
                 deleteSession();
-                var sessionId = '';
-                var userId = '';
-                var sectionId = '';
-                var sportEventId ='';
+                clearMainVariables();
                 window.location.href = "print-ticket.html";
             },
             error: function(xhr) {
-
+                deleteSession();
+                clearMainVariables();
+                redirectToSportsPage();
             }
         });
     });

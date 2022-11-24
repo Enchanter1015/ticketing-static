@@ -54,8 +54,6 @@ $(document).ready(function(){
               $('.address-line-one').text(response[0].ground_name);
               $('.address-line-two').text(response[0].ground_location);
               $('.event-about-thumb img').attr('src', response[0].image_url);
-
-              console.log(response[0])
               eventCountDown(response[0].date_time);
             },
             error: function(xhr) {

@@ -48,9 +48,9 @@
                 return strTime;
             }
             let ticketSummary = JSON.parse(localStorage.getItem('TS'));
-            console.log(ticketSummary);
             var ticketList = $('.ticket-list');
             var user = ticketSummary.user_tickets.user;
+            document.title = `${ticketSummary.sport_title} - ${ticketSummary.sport_subtitle} ${new Date(ticketSummary.date_time).toDateString()} @ ${formatTime(new Date(ticketSummary.date_time))}`;
             for(const ticket of ticketSummary.user_tickets.tickets){
                 ticketList.append(
                 `
