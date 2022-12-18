@@ -437,9 +437,6 @@
       offset: +2,
       day: 'Day',
       days: 'Days'
-    }, 
-    function () {
-        alert('Done!');
     });
     //Widget Slider
     $('.widget-slider').owlCarousel({
