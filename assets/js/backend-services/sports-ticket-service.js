@@ -29,15 +29,18 @@ $(document).ready(function(){
                 for (const ticketSection of response){
 
                     ticketSections.append(
-                        `<div class="col-12 ticket-section" data-image=${ticketSection.section_img} data-section-id=${ticketSection.ticket_section_id}>
-                            <div class="sports-ticket">
-                                <span class="cate" style="padding-bottom:5px;">${ticketSection.title}</span>
-                                <h2 class="ticket-title"><sup>LKR</sup>${ticketSection.price}</h2>
-                                <p>Available Seats: <span>${ticketSection.available_seat_count}</span></p>
-                                <a href="${ticketSection.available_seat_count > 0 ? 'sports-checkout.html':'#'}" class="custom-button section-ticket-reserve">proceed</a>
-                            </div>
-                        </div>
                         `
+                        <div class="col-12 ticket-section" data-image=${ticketSection.section_img} data-section-id=${ticketSection.ticket_section_id} style="margin-bottom:10px;cursor:pointer">
+                            <div class="list-group-item list-group-item-action flex-column align-items-start active" style="background-color: #0a1e5e;" >
+                                <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">${ticketSection.title}</h5>
+                                </div>
+                                <h3 class="mb-1">LKR ${ticketSection.price}</h3>
+                                <small>Available seats : ${ticketSection.available_seat_count}</small>
+                                <a href="${ticketSection.available_seat_count > 0 ? 'sports-checkout.html':'#'}" class="custom-button section-ticket-reserve ml-3">proceed</a>
+                            </div>
+                        </div>`
+
                     );
                 }
             },
