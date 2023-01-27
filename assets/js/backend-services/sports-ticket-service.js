@@ -29,9 +29,9 @@ $(document).ready(function(){
                 for (const ticketSection of response){
 
                     ticketSections.append(
-                        `<div class="col-sm-6 col-md-4 ticket-section" data-image=${ticketSection.section_img} data-section-id=${ticketSection.ticket_section_id}>
+                        `<div class="col-12 ticket-section" data-image=${ticketSection.section_img} data-section-id=${ticketSection.ticket_section_id}>
                             <div class="sports-ticket">
-                                <span class="cate">${ticketSection.title}</span>
+                                <span class="cate" style="padding-bottom:5px;">${ticketSection.title}</span>
                                 <h2 class="ticket-title"><sup>LKR</sup>${ticketSection.price}</h2>
                                 <p>Available Seats: <span>${ticketSection.available_seat_count}</span></p>
                                 <a href="${ticketSection.available_seat_count > 0 ? 'sports-checkout.html':'#'}" class="custom-button section-ticket-reserve">proceed</a>
