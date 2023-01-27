@@ -1,1 +1,1 @@
-const endpoint = 'http://localhost:3000/';
+const endpoint = 'https://datasrv.srilankansportstv.com/ticketing-api/';
